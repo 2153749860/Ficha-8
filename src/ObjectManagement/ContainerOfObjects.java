@@ -111,15 +111,23 @@ public class ContainerOfObjects {
      * @return valor booleano que sinaliza o sucesso/insucesso da operação
      */
     protected boolean setObject(int position, Object newObject){
-        if(this.objects[position] == null){
-            return false;
-        }
-        else{
+        if(this.objects[position] != null){
             this.objects[position] = newObject;
             return true;
         }
+        else{
+            return false;
+        }
     }
     
+    /**
+     * Método responsável por encontrar um {@link Object objeto} no vetor 
+     * de objetos
+     * 
+     * @param obj obleto a encontrar
+     * @return posição do objeto no vetor
+     * 
+     */
     protected int findObject(Object obj){
         for(int i=0; i<this.objects.length; i++){
             if(this.objects[i].equals(obj)){
