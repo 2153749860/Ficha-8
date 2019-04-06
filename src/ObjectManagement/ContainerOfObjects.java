@@ -10,7 +10,13 @@ package ObjectManagement;
  * @author tiago
  */
 public class ContainerOfObjects {
+    /**
+     * tamanho pré-definido do vetor de objetos
+     */
     private final int DEFAULT_SIZE = 100;
+    /**
+     * Vetor de objetos
+     */
     private Object objects[];
 
     /**
@@ -40,6 +46,14 @@ public class ContainerOfObjects {
      */
     public ContainerOfObjects(int maxSize){
         this.objects = new Object[maxSize];
+    }
+
+    public Object[] getObjects() {
+        return objects;
+    }
+
+    public void setObjects(Object[] objects) {
+        this.objects = objects;
     }
     
     /**
@@ -86,9 +100,8 @@ public class ContainerOfObjects {
      * @return o {@link Object objeto} eliminado
      */
     protected Object removeObject(int position){
-        //int pos = procuraPosicaoLivre();
         int i;
-        Object obj = objects[position];
+        Object obj = this.objects[position];
         if(this.objects[position] == null){
             return null;
         }
@@ -129,11 +142,57 @@ public class ContainerOfObjects {
      * 
      */
     protected int findObject(Object obj){
-        for(int i=0; i<this.objects.length; i++){
+        for(int i=0; i<this.objects.length && this.objects[i]!=null; i++){
             if(this.objects[i].equals(obj)){
                 return i;
             }
         }
         return -1;
     }
+    
+    /**
+     * Método responsável por retornar um objeto numa dada posição
+     * 
+     * @param position posição do objeto a retornar
+     * @return objeto na posição dada
+     */
+    protected Object getObject(int position){
+        return this.objects[position];
+    }
+    
+    /**
+     * Método responsável por retornar quantos objetos estão inseridos no vetor
+     * 
+     * @return 
+     */
+    protected int size(){
+        return this.procuraPosicaoLivre();
+    }
+    
+    /**
+     * Método responsável por retornar o vetor de objetos
+     * 
+     * @return vetor de objetos
+     */
+    protected Object[] getAllObj(){
+        return this.objects;
+    }
+
+    /**
+     * Método toString()
+     * 
+     * @return uma String com todas as informações da classe
+     */
+    @Override
+    public String toString() {
+        String s= "";
+        int pos = procuraPosicaoLivre();
+        for(int i=0; i<pos; i++){
+            s+="----===----\n";
+            s+=this.objects[i];
+        }
+        return s;
+    }
+    
+    
 }

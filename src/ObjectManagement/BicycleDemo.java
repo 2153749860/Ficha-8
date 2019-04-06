@@ -32,6 +32,7 @@ public class BicycleDemo {
         //Instancia de b4 de id == 9
         Bicycle b4 = new RoadBike("Verdes", "Rápida", 2, 9, 5, "Verde", 8, 20, 5);
         
+        
         //print das bicicletas b1 e b2
         System.out.println(b1.toString());
         System.out.println("-------===--------");
